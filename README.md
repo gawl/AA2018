@@ -1,1 +1,1 @@
-# AA2018
+Instrumenty dla mobileorc na Audio Art Festival 2018
