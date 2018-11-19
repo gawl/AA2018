@@ -1,5 +1,5 @@
-#N canvas 1215 125 260 559 12;
-#N canvas 1019 419 1099 524 tablet-ctl 0;
+#N canvas 953 361 260 559 12;
+#N canvas 1242 733 1099 524 tablet-ctl 0;
 #X obj 20 20 receive fromGUI;
 #X obj 20 45 list trim;
 #X obj 614 73 send toGUI;
@@ -15,11 +15,11 @@
 #X obj 183 120 s gotoone;
 #X obj 20 95 unpack;
 #X obj 20 120 + 1;
-#X obj 128 95 s play;
-#X obj 614 220 loadbang;
-#X obj 614 359 send toGUI;
+#X obj 129 95 s play;
+#X obj 21 347 loadbang;
+#X obj 21 486 send toGUI;
 #X obj 614 20 r menuupd;
-#X msg 614 250 list /menu frag1 frag2 frag3 frag4 frag5 frag6 frag7
+#X msg 21 377 list /menu frag1 frag2 frag3 frag4 frag5 frag6 frag7
 frag8 frag9 frag10 frag11 frag12 frag13 frag14 frag15 frag16 frag17
 frag18 frag19 frag20 frag21 frag22 frag23 frag24 frag25 frag26 frag27
 frag28 frag29 frag30 frag31 frag32 frag33 frag34 frag35 frag36 frag37
@@ -27,43 +27,52 @@ frag38 frag39 frag40 frag41 frag42 frag43 frag44 frag45 frag46 frag47
 frag48 frag49 frag50 frag51 frag52 frag53;
 #X obj 808 121 + 1;
 #X msg 614 45 list /count \$1;
-#X obj 237 95 s metro;
-#X obj 291 120 s click;
-#X obj 20 70 route /menu /next /play /gotoone /metro /click, f 47
-;
+#X obj 238 95 s metro;
+#X obj 292 120 s click;
 #X obj 20 222 s sintri;
-#X obj 159 222 * 5;
-#X obj 159 246 + 0.01;
-#X obj 159 293 s symspeed;
+#X obj 158 222 * 5;
+#X obj 158 246 + 0.01;
+#X obj 158 293 s symspeed;
 #X obj 227 270 s attack;
-#X obj 298 270 s release;
-#X obj 367 246 s feedback;
-#X obj 437 222 s del-mix;
-#X obj 367 222 * 0.999;
-#X obj 298 222 * 999;
-#X obj 298 246 + 1;
+#X obj 296 270 s release;
+#X obj 365 246 s feedback;
+#X obj 434 222 s del-mix;
+#X obj 365 222 * 0.999;
+#X obj 296 222 * 999;
+#X obj 296 246 + 1;
 #X obj 227 222 * 199;
 #X obj 227 246 + 1;
 #X obj 613 385 loadbang;
 #X obj 613 474 send toGUI;
 #X obj 741 120 + 1;
 #X obj 741 145 * 0.5;
-#X obj 88 222 * 1.2;
-#X obj 88 246 + 0.1;
-#X obj 88 270 s legato;
-#X obj 20 198 route /sintri /legato /symspeed /attack /release /feedback
-/del-mix, f 70;
+#X obj 89 222 * 1.2;
+#X obj 89 246 + 0.1;
+#X obj 89 270 s legato;
 #X obj 808 170 s drive;
 #X obj 808 146 * 2;
 #X msg 613 415 list /count 0 \, list /attack 0.035 \, list /release
 0.3 \, list /legato 0.5 \, list /symspeed 0.008 \, list /feedback 0.3
 \, list /del-mix 0.15;
+#X obj 347 120 s mdel;
+#X obj 347 95 * 250;
+#X obj 20 70 route /menu /next /play /gotoone /metro /click /mdel,
+f 55;
+#X obj 20 198 route /sintri /legato /symspeed /attack /release /feedback
+/del-mix /amdepth /amratio /amr-q, f 99;
+#X obj 503 270 s amdepth;
+#X obj 641 222 s amr-q;
+#X obj 572 270 s amratio;
+#X obj 503 222 * 4;
+#X obj 503 246 + 0.01;
+#X obj 572 246 + 1;
+#X obj 572 222 * 6;
 #X connect 0 0 1 0;
-#X connect 1 0 24 0;
+#X connect 1 0 49 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
 #X connect 5 0 6 0;
-#X connect 6 0 40 0;
+#X connect 6 0 39 0;
 #X connect 6 1 20 0;
 #X connect 7 0 11 0;
 #X connect 8 0 12 0;
@@ -72,39 +81,48 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 #X connect 16 0 19 0;
 #X connect 18 0 21 0;
 #X connect 19 0 17 0;
-#X connect 20 0 47 0;
+#X connect 20 0 45 0;
 #X connect 21 0 2 0;
-#X connect 24 0 13 0;
-#X connect 24 1 7 0;
-#X connect 24 2 15 0;
-#X connect 24 3 8 0;
-#X connect 24 4 22 0;
-#X connect 24 5 23 0;
-#X connect 24 6 45 0;
+#X connect 25 0 26 0;
 #X connect 26 0 27 0;
-#X connect 27 0 28 0;
-#X connect 33 0 31 0;
-#X connect 34 0 35 0;
-#X connect 35 0 30 0;
-#X connect 36 0 37 0;
-#X connect 37 0 29 0;
-#X connect 38 0 48 0;
-#X connect 40 0 41 0;
-#X connect 41 0 9 0;
+#X connect 32 0 30 0;
+#X connect 33 0 34 0;
+#X connect 34 0 29 0;
+#X connect 35 0 36 0;
+#X connect 36 0 28 0;
+#X connect 37 0 46 0;
+#X connect 39 0 40 0;
+#X connect 40 0 9 0;
+#X connect 41 0 42 0;
 #X connect 42 0 43 0;
-#X connect 43 0 44 0;
-#X connect 45 0 25 0;
-#X connect 45 1 42 0;
-#X connect 45 2 26 0;
-#X connect 45 3 36 0;
-#X connect 45 4 34 0;
-#X connect 45 5 33 0;
-#X connect 45 6 32 0;
-#X connect 47 0 46 0;
-#X connect 48 0 39 0;
+#X connect 45 0 44 0;
+#X connect 46 0 38 0;
+#X connect 48 0 47 0;
+#X connect 49 0 13 0;
+#X connect 49 1 7 0;
+#X connect 49 2 15 0;
+#X connect 49 3 8 0;
+#X connect 49 4 22 0;
+#X connect 49 5 23 0;
+#X connect 49 6 48 0;
+#X connect 49 7 50 0;
+#X connect 50 0 24 0;
+#X connect 50 1 41 0;
+#X connect 50 2 25 0;
+#X connect 50 3 35 0;
+#X connect 50 4 33 0;
+#X connect 50 5 32 0;
+#X connect 50 6 31 0;
+#X connect 50 7 54 0;
+#X connect 50 8 57 0;
+#X connect 50 9 52 0;
+#X connect 54 0 55 0;
+#X connect 55 0 51 0;
+#X connect 56 0 53 0;
+#X connect 57 0 56 0;
 #X restore 73 502 pd tablet-ctl;
-#N canvas 551 236 560 538 in-c-player 0;
-#X obj 109 126 tgl 25 0 empty play PLAY 0 -7 0 10 -261234 -1 -1 0 1
+#N canvas 994 131 560 538 in-c-player 0;
+#X obj 109 126 tgl 25 0 empty play PLAY 0 -7 0 10 -261234 -1 -1 1 1
 ;
 #X obj 103 350 f;
 #X obj 132 350 + 1;
@@ -125,11 +143,11 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 -1 -1;
 #X obj 251 89 loadbang;
 #X obj 289 122 r frag;
-#X obj 113 196 hsl 90 15 0 250 0 0 empty del empty -2 -8 0 10 -204786
+#X obj 113 196 hsl 90 15 0 250 0 0 empty mdel empty -2 -8 0 10 -204786
 -1 -1 0 1;
 #X obj 251 176 s menuupd;
 #X obj 102 257 delay;
-#X obj 110 168 tgl 20 0 empty metro mtr 0 -7 0 10 -204800 -1 -1 0 1
+#X obj 110 168 tgl 20 0 empty metro mtr 0 -7 0 10 -204800 -1 -1 1 1
 ;
 #X obj 139 168 tgl 20 0 empty click clck 0 -7 0 10 -204800 -1 -1 0
 1;
@@ -145,6 +163,7 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 #X obj 325 411 dac~;
 #X msg 325 320 0.7 \, 0 30;
 #X msg 270 227 read riley-fragments/frag\$1.txt;
+#X msg 41 145 1;
 #X connect 0 0 24 1;
 #X connect 1 0 2 0;
 #X connect 1 0 3 0;
@@ -164,6 +183,7 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 #X connect 14 0 11 0;
 #X connect 15 0 14 0;
 #X connect 16 0 14 0;
+#X connect 16 0 34 0;
 #X connect 17 0 11 0;
 #X connect 18 0 20 1;
 #X connect 20 0 23 0;
@@ -180,40 +200,41 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 #X connect 30 0 31 1;
 #X connect 32 0 29 0;
 #X connect 33 0 6 0;
+#X connect 34 0 21 0;
 #X coords 0 -1 1 1 120 120 2 100 100;
 #X restore 65 16 pd in-c-player;
-#N canvas 1565 81 705 963 westcoast-synth 0;
+#N canvas 1248 77 705 963 westcoast-synth 0;
 #X obj 303 51 r note;
 #X obj 441 898 dac~;
 #X obj 303 97 unpack 0 0 0;
 #X text 278 76 midinote amp dur;
 #X obj 121 120 hsl 128 15 1 200 0 0 empty attack attack -2 -8 0 10
--228856 -1 -1 444 1;
-#X obj 121 156 hsl 128 15 0.01 1.2 0 0 empty legato legato -2 -8 0
-10 -228856 -1 -1 7364 1;
-#X obj 123 248 hsl 128 15 1 4 0 0 empty drive drive -2 -8 0 10 -228856
--1 -1 0 1;
+-228856 -1 -1 2300 1;
+#X obj 121 150 hsl 128 15 0.01 1.2 0 0 empty legato legato -2 -8 0
+10 -228856 -1 -1 6700 1;
+#X obj 122 209 hsl 128 15 1 4 0 0 empty drive drive -2 -8 0 10 -228856
+-1 -1 600 1;
 #X obj 122 411 hsl 128 15 0 1 0 0 empty volume volume -2 -8 0 10 -228856
--1 -1 10700 1;
-#X obj 121 192 hsl 128 15 1 1000 0 0 empty release release -2 -8 0
-10 -228856 -1 -1 3810 1;
-#X obj 123 330 hsl 128 15 0 0.99 0 0 empty feedback feedback -2 -8
-0 10 -228856 -1 -1 3845 1;
-#X obj 123 284 hsl 128 15 0.01 5 1 0 empty symspeed symspeed -2 -8
+-1 -1 6350 1;
+#X obj 121 179 hsl 128 15 1 1000 0 0 empty release release -2 -8 0
+10 -228856 -1 -1 3701 1;
+#X obj 123 351 hsl 128 15 0 0.99 0 0 empty feedback feedback -2 -8
+0 10 -228856 -1 -1 12700 1;
+#X obj 122 239 hsl 128 15 0.01 5 1 0 empty symspeed symspeed -2 -8
 0 10 -228856 -1 -1 3289 1;
 #X obj 466 840 +~;
 #X obj 402 264 mtof;
-#X obj 343 365 *~;
+#X obj 343 404 *~;
 #X obj 343 529 cos~;
 #X obj 343 552 hip~ 5;
-#X obj 402 291 osc~;
-#X obj 343 473 +~;
+#X obj 402 330 osc~;
+#X obj 343 503 +~;
 #X obj 466 529 cos~;
 #X obj 466 552 hip~ 5;
 #X obj 466 502 +~ 0.03;
-#X obj 439 291 tri~;
-#X obj 439 317 lop~ 5000;
-#X obj 168 220 tgl 15 0 empty sintri sin/tri 17 7 0 10 -262144 -1 -1
+#X obj 439 330 tri~;
+#X obj 439 356 lop~ 5000;
+#X obj 132 260 tgl 15 0 empty sintri sin/tri 17 7 0 10 -262144 -1 -1
 0 1;
 #N canvas 879 740 450 300 switch 0;
 #X obj 60 32 inlet;
@@ -240,7 +261,7 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 #X connect 9 0 3 0;
 #X connect 10 0 11 0;
 #X connect 11 0 9 1;
-#X restore 372 340 pd switch;
+#X restore 372 379 pd switch;
 #X obj 343 286 *~;
 #X obj 343 308 *~;
 #X obj 278 840 +~;
@@ -249,8 +270,8 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 #X obj 494 778 *~;
 #X obj 296 747 delread4~ ndelL;
 #X obj 484 747 delread4~ ndelR;
-#X obj 123 366 hsl 128 15 0 1 0 0 empty del-mix del-mix -2 -8 0 10
--228856 -1 -1 1905 1;
+#X obj 123 381 hsl 128 15 0 1 0 0 empty del-mix del-mix -2 -8 0 10
+-228856 -1 -1 2905 1;
 #X obj 296 810 *~;
 #X obj 484 810 *~;
 #X obj 375 181 del;
@@ -260,16 +281,16 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 #X obj 343 234 pack 0 0;
 #X obj 572 639 osc~ 0.1;
 #X obj 387 639 osc~ 0.15;
-#X obj 361 397 osc~ 0.23;
-#X obj 361 421 +~ 0;
-#X obj 361 446 /~ 4;
+#X obj 361 427 osc~ 0.23;
+#X obj 361 451 +~ 0;
+#X obj 361 476 /~ 4;
 #X obj 343 332 *~;
 #X msg 296 510 \$1 30;
 #X obj 296 534 line~;
 #X msg 293 275 \$1 30;
 #X obj 293 299 line~;
 #X obj 278 864 expr~ tanh($v1);
-#X obj 482 54 loadbang;
+#X obj 447 43 loadbang;
 #X obj 387 665 *~ 3;
 #X obj 572 662 *~ 3;
 #X obj 278 604 *~;
@@ -284,14 +305,38 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 #X obj 534 778 lop~ 3000;
 #X obj 312 650 *~ 0.5;
 #X obj 498 650 *~ 0.5;
-#X msg 482 82 \; attack 8 \; legato 0.8 \; release 300 \; drive 1 \;
-symspeed 0.05 \; feedback 0.3 \; del-mix 0.15 \; volume 0.5 \; sintri
-0;
-#X obj 572 688 +~ 450;
-#X obj 387 689 +~ 300;
-#X obj 483 716 delwrite~ ndelR 450;
-#X obj 294 716 delwrite~ ndelL 300;
 #X obj 466 866 expr~ tanh($v1);
+#X obj 578 325 osc~;
+#X obj 578 349 *~;
+#X obj 578 298 * 1;
+#X obj 124 291 hsl 128 15 0.01 4 1 0 empty amdepth amdepth -2 -8 0
+10 -228856 -1 -1 5700 1;
+#X obj 124 321 hsl 128 15 1 7 0 0 empty amratio amratio -2 -8 0 10
+-228856 -1 -1 4400 1;
+#X obj 199 262 tgl 15 0 empty amr-q amr-q 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 578 211 int;
+#X obj 631 239 spigot;
+#X obj 578 239 spigot;
+#X obj 633 175 * -1;
+#X obj 633 199 + 1;
+#X msg 447 71 \; attack 8 \; legato 0.8 \; release 300 \; drive 1 \;
+symspeed 0.05 \; feedback 0.3 \; del-mix 0.15 \; volume 0.5 \; sintri
+0 \; amr-q 1 \; amdepth 1 \; amratio 2;
+#X msg 619 306 \$1 30;
+#X obj 619 330 line~;
+#X obj 572 688 +~ 500;
+#X obj 387 689 +~ 375;
+#X obj 294 716 delwrite~ ndelL 375;
+#X obj 483 716 delwrite~ ndelR 500;
+#X obj 578 270 t b f;
+#X obj 578 403 +~ 1;
+#X obj 402 298 *~;
+#X obj 578 376 *~;
+#X obj 521 825 *~ 0.3;
+#X obj 337 826 *~ 0.3;
+#X obj 346 802 *~ 0.5;
+#X obj 535 802 *~ 0.5;
 #X connect 0 0 2 0;
 #X connect 2 0 12 0;
 #X connect 2 1 28 0;
@@ -306,8 +351,9 @@ symspeed 0.05 \; feedback 0.3 \; del-mix 0.15 \; volume 0.5 \; sintri
 #X connect 9 0 29 1;
 #X connect 9 0 30 1;
 #X connect 10 0 43 0;
-#X connect 11 0 72 0;
-#X connect 12 0 16 0;
+#X connect 11 0 67 0;
+#X connect 12 0 70 0;
+#X connect 12 0 88 0;
 #X connect 12 0 21 0;
 #X connect 13 0 17 0;
 #X connect 14 0 15 0;
@@ -327,6 +373,7 @@ symspeed 0.05 \; feedback 0.3 \; del-mix 0.15 \; volume 0.5 \; sintri
 #X connect 25 0 26 0;
 #X connect 25 0 26 1;
 #X connect 26 0 46 0;
+#X connect 26 0 89 1;
 #X connect 27 0 51 0;
 #X connect 28 0 40 0;
 #X connect 28 1 36 0;
@@ -358,28 +405,54 @@ symspeed 0.05 \; feedback 0.3 \; del-mix 0.15 \; volume 0.5 \; sintri
 #X connect 49 0 50 0;
 #X connect 50 0 46 1;
 #X connect 51 0 1 0;
-#X connect 52 0 67 0;
-#X connect 53 0 69 0;
-#X connect 54 0 68 0;
+#X connect 52 0 79 0;
+#X connect 53 0 83 0;
+#X connect 54 0 82 0;
 #X connect 55 0 27 0;
-#X connect 55 0 71 0;
+#X connect 55 0 84 0;
 #X connect 56 0 11 0;
-#X connect 56 0 70 0;
+#X connect 56 0 85 0;
 #X connect 57 1 27 0;
-#X connect 57 1 71 0;
+#X connect 57 1 84 0;
 #X connect 58 0 59 0;
 #X connect 59 0 57 1;
 #X connect 59 0 60 1;
 #X connect 60 1 11 0;
-#X connect 60 1 70 0;
+#X connect 60 1 85 0;
 #X connect 61 0 36 1;
 #X connect 62 0 58 0;
-#X connect 63 0 71 0;
-#X connect 64 0 70 0;
+#X connect 63 0 91 0;
+#X connect 63 0 92 0;
+#X connect 64 0 90 0;
+#X connect 64 0 93 0;
 #X connect 65 0 57 0;
 #X connect 66 0 60 0;
-#X connect 68 0 32 0;
-#X connect 69 0 31 0;
-#X connect 72 0 1 1;
+#X connect 67 0 1 1;
+#X connect 68 0 69 0;
+#X connect 69 0 89 0;
+#X connect 70 0 68 0;
+#X connect 71 0 80 0;
+#X connect 72 0 74 0;
+#X connect 72 0 75 0;
+#X connect 73 0 76 1;
+#X connect 73 0 77 0;
+#X connect 74 0 76 0;
+#X connect 75 0 86 0;
+#X connect 76 0 86 0;
+#X connect 77 0 78 0;
+#X connect 78 0 75 1;
+#X connect 80 0 81 0;
+#X connect 81 0 69 1;
+#X connect 82 0 32 0;
+#X connect 83 0 31 0;
+#X connect 86 0 70 0;
+#X connect 86 1 70 1;
+#X connect 87 0 88 1;
+#X connect 88 0 16 0;
+#X connect 89 0 87 0;
+#X connect 90 0 84 0;
+#X connect 91 0 85 0;
+#X connect 92 0 84 0;
+#X connect 93 0 85 0;
 #X coords 0 -1 1 1 180 350 2 100 100;
 #X restore 37 144 pd westcoast-synth;
