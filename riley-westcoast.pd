@@ -51,9 +51,6 @@ frag48 frag49 frag50 frag51 frag52 frag53;
 #X obj 89 270 s legato;
 #X obj 808 170 s drive;
 #X obj 808 146 * 2;
-#X msg 613 415 list /count 0 \, list /attack 0.035 \, list /release
-0.3 \, list /legato 0.5 \, list /symspeed 0.008 \, list /feedback 0.3
-\, list /del-mix 0.15;
 #X obj 347 120 s mdel;
 #X obj 347 95 * 250;
 #X obj 20 70 route /menu /next /play /gotoone /metro /click /mdel,
@@ -67,8 +64,11 @@ f 55;
 #X obj 503 246 + 0.01;
 #X obj 572 246 + 1;
 #X obj 572 222 * 6;
+#X msg 613 415 list /count 0 \, list /attack 0.035 \, list /release
+0.3 \, list /legato 0.5 \, list /symspeed 0.008 \, list /feedback 0.3
+\, list /del-mix 0.15 \, list /amr-q 1;
 #X connect 0 0 1 0;
-#X connect 1 0 49 0;
+#X connect 1 0 48 0;
 #X connect 3 0 4 0;
 #X connect 4 0 5 0;
 #X connect 5 0 6 0;
@@ -90,36 +90,36 @@ f 55;
 #X connect 34 0 29 0;
 #X connect 35 0 36 0;
 #X connect 36 0 28 0;
-#X connect 37 0 46 0;
+#X connect 37 0 57 0;
 #X connect 39 0 40 0;
 #X connect 40 0 9 0;
 #X connect 41 0 42 0;
 #X connect 42 0 43 0;
 #X connect 45 0 44 0;
-#X connect 46 0 38 0;
-#X connect 48 0 47 0;
-#X connect 49 0 13 0;
-#X connect 49 1 7 0;
-#X connect 49 2 15 0;
-#X connect 49 3 8 0;
-#X connect 49 4 22 0;
-#X connect 49 5 23 0;
-#X connect 49 6 48 0;
-#X connect 49 7 50 0;
-#X connect 50 0 24 0;
-#X connect 50 1 41 0;
-#X connect 50 2 25 0;
-#X connect 50 3 35 0;
-#X connect 50 4 33 0;
-#X connect 50 5 32 0;
-#X connect 50 6 31 0;
-#X connect 50 7 54 0;
-#X connect 50 8 57 0;
-#X connect 50 9 52 0;
-#X connect 54 0 55 0;
-#X connect 55 0 51 0;
-#X connect 56 0 53 0;
-#X connect 57 0 56 0;
+#X connect 47 0 46 0;
+#X connect 48 0 13 0;
+#X connect 48 1 7 0;
+#X connect 48 2 15 0;
+#X connect 48 3 8 0;
+#X connect 48 4 22 0;
+#X connect 48 5 23 0;
+#X connect 48 6 47 0;
+#X connect 48 7 49 0;
+#X connect 49 0 24 0;
+#X connect 49 1 41 0;
+#X connect 49 2 25 0;
+#X connect 49 3 35 0;
+#X connect 49 4 33 0;
+#X connect 49 5 32 0;
+#X connect 49 6 31 0;
+#X connect 49 7 53 0;
+#X connect 49 8 56 0;
+#X connect 49 9 51 0;
+#X connect 53 0 54 0;
+#X connect 54 0 50 0;
+#X connect 55 0 52 0;
+#X connect 56 0 55 0;
+#X connect 57 0 38 0;
 #X restore 73 502 pd tablet-ctl;
 #N canvas 994 131 560 538 in-c-player 0;
 #X obj 109 126 tgl 25 0 empty play PLAY 0 -7 0 10 -261234 -1 -1 1 1
@@ -209,17 +209,17 @@ f 55;
 #X obj 303 97 unpack 0 0 0;
 #X text 278 76 midinote amp dur;
 #X obj 121 120 hsl 128 15 1 200 0 0 empty attack attack -2 -8 0 10
--228856 -1 -1 2300 1;
+-228856 -1 -1 444 1;
 #X obj 121 150 hsl 128 15 0.01 1.2 0 0 empty legato legato -2 -8 0
-10 -228856 -1 -1 6700 1;
+10 -228856 -1 -1 7364 1;
 #X obj 122 209 hsl 128 15 1 4 0 0 empty drive drive -2 -8 0 10 -228856
--1 -1 600 1;
+-1 -1 0 1;
 #X obj 122 411 hsl 128 15 0 1 0 0 empty volume volume -2 -8 0 10 -228856
 -1 -1 6350 1;
 #X obj 121 179 hsl 128 15 1 1000 0 0 empty release release -2 -8 0
-10 -228856 -1 -1 3701 1;
+10 -228856 -1 -1 3810 1;
 #X obj 123 351 hsl 128 15 0 0.99 0 0 empty feedback feedback -2 -8
-0 10 -228856 -1 -1 12700 1;
+0 10 -228856 -1 -1 3845 1;
 #X obj 122 239 hsl 128 15 0.01 5 1 0 empty symspeed symspeed -2 -8
 0 10 -228856 -1 -1 3289 1;
 #X obj 466 840 +~;
@@ -271,7 +271,7 @@ f 55;
 #X obj 296 747 delread4~ ndelL;
 #X obj 484 747 delread4~ ndelR;
 #X obj 123 381 hsl 128 15 0 1 0 0 empty del-mix del-mix -2 -8 0 10
--228856 -1 -1 2905 1;
+-228856 -1 -1 1905 1;
 #X obj 296 810 *~;
 #X obj 484 810 *~;
 #X obj 375 181 del;
@@ -310,10 +310,10 @@ f 55;
 #X obj 578 349 *~;
 #X obj 578 298 * 1;
 #X obj 124 291 hsl 128 15 0.01 4 1 0 empty amdepth amdepth -2 -8 0
-10 -228856 -1 -1 5700 1;
+10 -228856 -1 -1 8860 1;
 #X obj 124 321 hsl 128 15 1 7 0 0 empty amratio amratio -2 -8 0 10
--228856 -1 -1 4400 1;
-#X obj 199 262 tgl 15 0 empty amr-q amr-q 17 7 0 10 -262144 -1 -1 0
+-228856 -1 -1 2858 1;
+#X obj 199 262 tgl 15 0 empty amr-q amr-q 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 578 211 int;
 #X obj 631 239 spigot;
